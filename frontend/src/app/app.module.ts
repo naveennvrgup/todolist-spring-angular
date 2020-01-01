@@ -11,15 +11,16 @@ import { TodoComponent } from './todo/todo.component';
 import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
 import { LogoutComponent } from './logout/logout.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TodoDetailComponent } from './todo-detail/todo-detail.component';
+import { HttpInterceptorBasicAuthService } from './service/http/http-interceptor-basic-auth.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
     LoginComponent,
-    ErrorComponent,
+    ErrorComponent, 
     TodoComponent,
     FooterComponent,
     MenuComponent,
@@ -32,7 +33,9 @@ import { TodoDetailComponent } from './todo-detail/todo-detail.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorBasicAuthService,multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
