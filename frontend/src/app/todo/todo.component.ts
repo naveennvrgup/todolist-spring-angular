@@ -4,10 +4,10 @@ import { Router } from '@angular/router';
 
 export class Todo{
   constructor(
-    public id: number=1,
+    public id: number=null,
     public description: string='',
     public done: boolean=false,
-    public targetDate: Date=null
+    public targetDate: Date=new Date()
   ){}
 
 }
@@ -49,6 +49,9 @@ export class TodoComponent implements OnInit {
     )
   }
 
+  addTodo(){
+    this.router.navigate(['todos',-1])
+  }
 
   updateTodoHandler(id){
     this.router.navigate(['todos',id])

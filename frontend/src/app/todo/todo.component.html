@@ -1,6 +1,9 @@
 <h1>My Todo's</h1>
 <div class="container">
   <div *ngIf="successMsg" class="alert alert-success">{{successMsg}}</div>
+  <div class="text-right">
+    <button class="btn btn-primary mb-3" (click)='addTodo()'>Add Todo</button>
+  </div>
 
   <table class="todos table">
     <thead>
